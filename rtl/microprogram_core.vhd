@@ -8,6 +8,7 @@ LIBRARY ieee  ;
     use work.microprogram_interface_pkg.address_width;
     use work.microprogram_interface_pkg.jump_delay_slots;
     use work.microprogram_interface_pkg.program_start_array;
+    use work.microprogram_interface_pkg.no_cached_programs;
 
 -- the program and data rams take their sizes and word widths from the
 -- initial contents g_program and g_data, a power of 2 words each
@@ -33,7 +34,7 @@ entity microprogram_core is
             ;g_data_forwarding : boolean := false
             ;g_program_cache   : boolean := false
             ;g_dynamic_lines   : positive := 1
-            ;g_cached_programs : program_start_array := (1 to 0 => 0)
+            ;g_cached_programs : program_start_array := no_cached_programs
            );
     port(
         clock        : in std_logic

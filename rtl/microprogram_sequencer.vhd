@@ -6,6 +6,7 @@ LIBRARY ieee  ;
     use work.multi_port_ram_pkg.all;
     use work.microinstruction_pkg.all;
     use work.microprogram_interface_pkg.program_start_array;
+    use work.microprogram_interface_pkg.no_cached_programs;
 
 -- g_program_size : the program ram's words, the program counter wraps
 -- around at its end and start and jump addresses are taken modulo it
@@ -41,7 +42,7 @@ entity microprogram_sequencer is
         ;g_instruction_width : positive := 32
         ;g_cache_depth : natural := 0
         ;g_dynamic_lines : natural := 1
-        ;g_static_starts : program_start_array := (1 to 0 => 0)
+        ;g_static_starts : program_start_array := no_cached_programs
         ;g_static_words  : work.dual_port_ram_pkg.ram_array := (0 to 0 => (g_instruction_width-1 downto 0 => '0'))
     );
     port(

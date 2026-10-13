@@ -28,6 +28,10 @@ package microprogram_interface_pkg is
     -- program start addresses, the programs microprogram_core caches from
     -- the start
     type program_start_array is array (natural range <>) of natural;
+    -- no programs, the cached programs' default : a named constant, as
+    -- Vivado rejects a null range aggregate such as (1 to 0 => 0) with a
+    -- critical warning (Synth 8-507)
+    constant no_cached_programs : program_start_array(1 to 0) := (others => 0);
 
 end package microprogram_interface_pkg;
 

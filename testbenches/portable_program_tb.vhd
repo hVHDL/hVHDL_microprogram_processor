@@ -162,7 +162,7 @@ architecture vunit_simulation of portable_program_tb is
         if g_static_cache then
             return (0, 128);
         end if;
-        return (1 to 0 => 0);
+        return no_cached_programs;
     end cached_programs;
 
     function is_static (start : natural) return boolean is
